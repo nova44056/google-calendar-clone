@@ -1,0 +1,26 @@
+.nav{
+    &__container{
+        border: 1px solid #dadce0;
+        padding: 0.5rem 1rem;
+        display: flex;
+    }
+
+    &__main_menu{
+        margin-right: .5rem;
+    }
+
+    &__logo{
+        display: flex;
+        align-items: center;
+        
+        :first-child{
+            margin-right: 1rem;
+        }
+
+        :last-child{
+            font-family: 'Product Sans';
+            color: #5f6368;
+            font-size: 1.5rem;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+.main_menu{
+    &__container{
+        outline: none;
+        border: none;
+        background: none;
+        cursor: pointer;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: .5rem;
+    }
+
+    &__container:hover{
+        background: rgba(60,64,67,.1);
+    }
+
+}
