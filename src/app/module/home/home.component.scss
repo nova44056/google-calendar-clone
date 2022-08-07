@@ -6,12 +6,20 @@
 
 
     &__content{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        display: flex;
+        flex-direction: row;
         height: calc(100vh - 58px);
 
+        &--hidden{
+            flex: 0 !important;
+        }
+
+        :first-child{
+            flex: 0.2;
+        }
+
         :last-child{
-            grid-column: 2 / span 4;
+            flex: 1;
         }
     }
 }

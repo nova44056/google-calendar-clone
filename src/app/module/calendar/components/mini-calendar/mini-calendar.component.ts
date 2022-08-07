@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Calendar } from './class/calendar';
-import { Page } from './class/page';
+import { Calendar, Page } from '../../class';
 
 @Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss'],
+  selector: 'app-mini-calendar',
+  templateUrl: './mini-calendar.component.html',
+  styleUrls: ['./mini-calendar.component.scss'],
 })
-export class CalendarComponent extends Calendar implements OnInit {
+export class MiniCalendarComponent extends Calendar implements OnInit {
   protected MONTH = [
     'January',
     'February',

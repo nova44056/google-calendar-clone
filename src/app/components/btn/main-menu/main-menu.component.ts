@@ -7,11 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MainMenuComponent implements OnInit {
   @Input()
-  onClickCallback: Function | undefined;
-
-  onClick(): void {
-    if (this.onClickCallback) this.onClickCallback();
-  }
+  public onClickCallback: Function | undefined;
 
   constructor() {}
 

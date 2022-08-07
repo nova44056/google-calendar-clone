@@ -1,0 +1,15 @@
+<div class="nav__container">
+  <div class="nav__main_menu">
+    <app-main-menu
+      onclick="(() => {
+      const homeContent = document.querySelector('.home__content');
+      homeContent.firstChild.classList.toggle('home__content--hidden');
+    })()"
+    ></app-main-menu>
+  </div>
+  <div class="nav__logo">
+    <app-logo></app-logo>
+    <span>Calendar</span>
+  </div>
+</div>
+<ng-template [cdkPortalOutlet]="this.portal$ | async"></ng-template>
