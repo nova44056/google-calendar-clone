@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { TemplatePortal } from '@angular/cdk/portal';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Portal, PortalBridgeService } from 'src/app/portal-bridge.service';
+import { PortalBridgeService } from 'src/app/portal-bridge.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +9,7 @@ import { Portal, PortalBridgeService } from 'src/app/portal-bridge.service';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-  portal$: Observable<Portal>;
+  portal$: Observable<TemplatePortal>;
 
   constructor(private portalBridge: PortalBridgeService) {}
 

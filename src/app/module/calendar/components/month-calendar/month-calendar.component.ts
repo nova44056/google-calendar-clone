@@ -1,5 +1,15 @@
 import { CdkPortal, TemplatePortal } from '@angular/cdk/portal';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { PortalBridgeService } from 'src/app/portal-bridge.service';
 import { Calendar, Page } from '../../class';
 
@@ -8,11 +18,8 @@ import { Calendar, Page } from '../../class';
   templateUrl: './month-calendar.component.html',
   styleUrls: ['./month-calendar.component.scss'],
 })
-export class MonthCalendarComponent
-  extends Calendar
-  implements OnInit, OnDestroy
-{
-  @ViewChild(CdkPortal, { static: true }) portalContent: CdkPortal;
+export class MonthCalendarComponent extends Calendar implements AfterViewInit {
+  @ViewChild('portalContent') portalContent: TemplateRef<unknown>;
 
   protected MONTH = [
     'January',
@@ -29,7 +36,10 @@ export class MonthCalendarComponent
     'December',
   ];
 
-  constructor(private portalBridgeService: PortalBridgeService) {
+  constructor(
+    private portalBridgeService: PortalBridgeService,
+    private _viewContainerRef: ViewContainerRef
+  ) {
     const currentMonth = new Date().getMonth(); // default current month
     const currentYear = new Date().getFullYear(); // default current year
     super(currentMonth, currentYear);
@@ -79,11 +89,11 @@ export class MonthCalendarComponent
     }
   }
 
-  ngOnInit(): void {
-    this.portalBridgeService.setPortal(this.portalContent);
-  }
-
-  ngOnDestroy(): void {
-    this.portalContent.detach();
+  ngAfterViewInit(): void {
+    const portal = new TemplatePortal(
+      this.portalContent,
+      this._viewContainerRef
+    );
+    this.portalBridgeService.setPortal(portal);
   }
 }

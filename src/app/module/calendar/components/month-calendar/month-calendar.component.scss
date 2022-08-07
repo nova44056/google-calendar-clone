@@ -1,0 +1,30 @@
+.month_calendar{
+    &__navigationContainer{
+        display: flex;
+        align-items: center;
+        margin-left: 3rem;
+
+        button{
+            padding: .25rem;
+            border-radius: 50%;
+        }
+
+        button:hover{
+            background: #f5f5f5;
+        }
+
+        :nth-child(2){
+            margin-right: 1.5rem;
+        }
+
+        :not(:last-child){
+            margin-right: .5rem;
+        }
+
+        span{
+            font-size: 1.5rem;
+            font-style: 'Product-Sans';
+            color: #3c4043;
+        }
+    }
+}

@@ -11,5 +11,5 @@
     <app-logo></app-logo>
     <span>Calendar</span>
   </div>
+  <ng-template [cdkPortalOutlet]="this.portal$ | async"></ng-template>
 </div>
-<ng-template [cdkPortalOutlet]="this.portal$ | async"></ng-template>

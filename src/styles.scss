@@ -55,6 +55,15 @@ $google-calendar-clone-theme: mat.define-light-theme((
     $green : #34A853;
     $gray: #dadce0;
     $dark_gray: #5f6368;
+    $black: #3c4043;
+}
+
+
+button{
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
