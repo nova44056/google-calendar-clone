@@ -3,7 +3,7 @@
     <app-main-menu
       onclick="(() => {
       const homeContent = document.querySelector('.home__content');
-      homeContent.firstChild.classList.toggle('home__content--hidden');
+      homeContent.firstChild.classList.toggle('sidebar--collapse');
     })()"
     ></app-main-menu>
   </div>
@@ -11,5 +11,10 @@
     <app-logo></app-logo>
     <span>Calendar</span>
   </div>
+  <app-secondary-btn [text]="'Today'"></app-secondary-btn>
+  <app-secondary-dropdown-btn
+    [options]="['Day', 'Week', 'Month', 'Year', 'Schedule']"
+    [currentValue]="'Month'"
+  ></app-secondary-dropdown-btn>
   <ng-template [cdkPortalOutlet]="this.portal$ | async"></ng-template>
 </div>

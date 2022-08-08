@@ -10,16 +10,13 @@
         flex-direction: row;
         height: calc(100vh - 58px);
 
-        &--hidden{
-            flex: 0 !important;
-        }
-
-        :first-child{
-            flex: 0.2;
-        }
-
         :last-child{
             flex: 1;
+        }
+
+        // collapse sidebar
+        .sidebar--collapse{
+            margin-left: -256px;
         }
     }
 }

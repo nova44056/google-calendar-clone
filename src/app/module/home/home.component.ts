@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import { PortalBridgeService } from 'src/app/portal-bridge.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +7,9 @@ import { PortalBridgeService } from 'src/app/portal-bridge.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  portalBridgeService: PortalBridgeService;
+  constructor(private route: ActivatedRoute) {}
 
-  constructor() {
-    this.portalBridgeService = new PortalBridgeService();
+  ngOnInit(): void {
+    console.log(this.route.snapshot);
   }
-
-  ngOnInit(): void {}
 }

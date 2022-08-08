@@ -1,7 +1,8 @@
 .sidebar{
     &__container{
         height: 100%;
-        background-color: red;
- 
+        width: 256px;
+        margin-left: 0px;
+        border-right: 1px solid #dadce0;        
     }
 }
