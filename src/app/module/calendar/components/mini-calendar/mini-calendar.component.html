@@ -1,49 +1,52 @@
-<div class="mini_calendar__navigationContainer">
-  <span
-    >{{ this.MONTH[this.getCurrentMonth()] }} {{ this.getCurrentYear() }}</span
-  >
-  <div>
-    <button (click)="this.previous()">
-      <mat-icon>navigate_before</mat-icon>
-    </button>
-    <button (click)="this.next()">
-      <mat-icon>navigate_next</mat-icon>
-    </button>
-  </div>
-</div>
-<table class="mini_calendar">
-  <thead>
-    <tr>
-      <th>Sun</th>
-      <th>Mon</th>
-      <th>Tue</th>
-      <th>Wed</th>
-      <th>Thu</th>
-      <th>Fri</th>
-      <th>Sat</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      class="mini_calendar__row"
-      *ngFor="let row of this.getPage(this.getCurrentMonth()).getDays()"
+<div class="mini_calendar">
+  <div class="mini_calendar__navigationContainer">
+    <span
+      >{{ this.MONTH[this.getCurrentMonth()] }}
+      {{ this.getCurrentYear() }}</span
     >
-      <td class="mini_calendar__column" *ngFor="let column of row">
-        <div
-          [ngClass]="{
-            'mini_calendar__column--active-today': this.isToday(
-              column.getYear(),
-              column.getMonth(),
-              column.getDay()
-            ),
-            'mini_calendar__column--active':
-              column.getDay() === this.getCurrentDay() &&
-              column.getMonth() === this.getCurrentMonth()
-          }"
-        >
-          {{ column.getDay() }}
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <div>
+      <button (click)="this.previous()">
+        <mat-icon>navigate_before</mat-icon>
+      </button>
+      <button (click)="this.next()">
+        <mat-icon>navigate_next</mat-icon>
+      </button>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        class="mini_calendar__row"
+        *ngFor="let row of this.getPage(this.getCurrentMonth()).getDays()"
+      >
+        <td class="mini_calendar__column" *ngFor="let column of row">
+          <div
+            [ngClass]="{
+              'mini_calendar__column--active-today': this.isToday(
+                column.getYear(),
+                column.getMonth(),
+                column.getDay()
+              ),
+              'mini_calendar__column--active':
+                column.getDay() === this.getCurrentDay() &&
+                column.getMonth() === this.getCurrentMonth()
+            }"
+          >
+            {{ column.getDay() }}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
