@@ -1,4 +1,4 @@
-<table>
+<table class="month_calendar">
   <thead>
     <tr>
       <th>Sun</th>
@@ -11,8 +11,24 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of this.getPage(this.getCurrentMonth()).getDays()">
-      <td *ngFor="let column of row">
+    <tr
+      class="month_calendar__row"
+      *ngFor="let row of this.getPage(this.getCurrentMonth()).getDays()"
+    >
+      <td
+        class="month_calendar__column"
+        [ngClass]="{
+          'month_calendar__column--active-today': this.isToday(
+            column.getDay(),
+            column.getMonth(),
+            column.getYear()
+          ),
+          'month_calendar__column--active':
+            column.getDay() === this.getCurrentDay() &&
+            column.getMonth() === this.getCurrentMonth()
+        }"
+        *ngFor="let column of row"
+      >
         {{ column.getDay() }}
       </td>
     </tr>
@@ -22,10 +38,10 @@
 <ng-template #portalContent>
   <div class="month_calendar__navigationContainer">
     <div>
-      <button (click)="this.previousMonth()">
+      <button (click)="this.previous()">
         <mat-icon>navigate_before</mat-icon>
       </button>
-      <button (click)="this.nextMonth()">
+      <button (click)="this.next()">
         <mat-icon>navigate_next</mat-icon>
       </button>
     </div>

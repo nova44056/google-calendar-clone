@@ -27,4 +27,18 @@
             color: #3c4043;
         }
     }
+
+    &__row{
+    }
+
+    &__column{
+        &--active{
+            background-color: #AECBFA;
+        }
+
+        &--active-today{
+            background-color: #1a73e8;
+            color: white;
+        }
+    }
 }
