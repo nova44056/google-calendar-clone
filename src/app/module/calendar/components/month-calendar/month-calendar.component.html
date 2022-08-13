@@ -15,21 +15,21 @@
       class="month_calendar__row"
       *ngFor="let row of this.getPage(this.getCurrentMonth()).getDays()"
     >
-      <td
-        class="month_calendar__column"
-        [ngClass]="{
-          'month_calendar__column--active-today': this.isToday(
-            column.getDay(),
-            column.getMonth(),
-            column.getYear()
-          ),
-          'month_calendar__column--active':
-            column.getDay() === this.getCurrentDay() &&
-            column.getMonth() === this.getCurrentMonth()
-        }"
-        *ngFor="let column of row"
-      >
-        {{ column.getDay() }}
+      <td class="month_calendar__column" *ngFor="let column of row">
+        <div
+          [ngClass]="{
+            'month_calendar__column--active-today': this.isToday(
+              column.getYear(),
+              column.getMonth(),
+              column.getDay()
+            ),
+            'month_calendar__column--active':
+              column.getDay() === this.getCurrentDay() &&
+              column.getMonth() === this.getCurrentMonth()
+          }"
+        >
+          {{ column.getDay() }}
+        </div>
       </td>
     </tr>
   </tbody>
