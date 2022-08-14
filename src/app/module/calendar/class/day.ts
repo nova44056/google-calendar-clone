@@ -7,10 +7,10 @@ export class Day {
 
   private details: Detail[] = [];
 
-  constructor(day: number, month: number, year: number) {
-    this.day = day;
-    this.month = month;
+  constructor(year: number, month: number, day: number) {
     this.year = year;
+    this.month = month;
+    this.day = day;
   }
 
   public addDetail(detail: Detail) {

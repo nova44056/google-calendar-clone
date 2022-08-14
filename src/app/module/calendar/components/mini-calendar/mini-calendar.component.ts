@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
-import { Calendar, Page } from '../../class';
+import { Calendar, Day, Page } from '../../class';
+import { getTotalDaysOfGivenMonth } from '../../utils';
 
 @Component({
   selector: 'app-mini-calendar',
@@ -42,6 +43,43 @@ export class MiniCalendarComponent extends Calendar implements OnInit {
         this.setPages(newPages);
       }
     });
+  }
+
+  public override getPage(month: number): Page {
+    const page = this.pages[month];
+
+    if (page.getDays().length < 6) {
+      for (let i = page.getDays().length; i < 6; i++) {
+        const lastRowOfPage = page.getDays().length;
+        const lastColumnOfPage = page.getDays()[lastRowOfPage - 1].length;
+
+        const lastDayInPage =
+          page.getDays()[lastRowOfPage - 1][lastColumnOfPage - 1];
+
+        const totalDaysInMonth = getTotalDaysOfGivenMonth(
+          lastDayInPage.getMonth(),
+          lastDayInPage.getYear()
+        );
+
+        const m =
+          lastDayInPage.getDay() === totalDaysInMonth
+            ? lastDayInPage.getMonth() + 1
+            : lastDayInPage.getMonth();
+
+        const y = lastDayInPage.getYear();
+
+        const additionalDays = Array.from(
+          {
+            length: 7,
+          },
+          (_, i: number) =>
+            new Day(y, m, (i + lastDayInPage.getDay() + 1) % totalDaysInMonth)
+        );
+        page.getDays().push(additionalDays);
+      }
+    }
+
+    return page;
   }
 
   ngOnInit(): void {}

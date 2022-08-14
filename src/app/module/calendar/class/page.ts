@@ -59,7 +59,7 @@ export class Page {
 
     return Array.from(
       { length: totalNumOfDaysInPreviousMonth },
-      (_, i: number) => new Day(i + 1, month, year)
+      (_, i: number) => new Day(year, month, i + 1)
     );
   }
 
@@ -74,7 +74,7 @@ export class Page {
 
     return Array.from(
       { length: totalNumOfDaysInNextMonth },
-      (_, i: number) => new Day(i + 1, month, year)
+      (_, i: number) => new Day(year, month, i + 1)
     );
   }
 
@@ -88,7 +88,15 @@ export class Page {
     );
     return Array.from(
       { length: totalNumOfDaysInCurrentMonth },
-      (_, i: number) => new Day(i + 1, month, year)
+      (_, i: number) => new Day(year, month, i + 1)
     );
+  }
+
+  public getYear(): number {
+    return this.year;
+  }
+
+  public getMonth(): number {
+    return this.month;
   }
 }
