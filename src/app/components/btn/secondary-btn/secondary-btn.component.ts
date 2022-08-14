@@ -9,6 +9,9 @@ export class SecondaryBtnComponent implements OnInit {
   @Input()
   text: string;
 
+  @Input()
+  icon: string;
+
   constructor() {}
 
   ngOnInit(): void {}

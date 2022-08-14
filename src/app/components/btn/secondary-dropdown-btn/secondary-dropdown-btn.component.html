@@ -1,1 +1,42 @@
-<app-secondary-btn [text]="this.currentValue"> </app-secondary-btn>
+<div class="secondary_dropdown_btn" tabindex="0">
+  <app-secondary-btn
+    onclick="(() => {
+    const dropdownList = document.querySelector('.secondary_dropdown_btn__dropdown-list');
+    const dropdownBtn = document.querySelector('.secondary_dropdown_btn').querySelector('.secondary_btn');
+    dropdownBtn.focus();
+    dropdownList.classList.toggle('secondary_dropdown_btn__dropdown-list--show');
+
+    if( dropdownList.classList.contains('secondary_dropdown_btn__dropdown-list--show') ) {
+        dropdownList.style.height = `${dropdownList.childElementCount*100}%`;
+    }else{
+        dropdownList.style.height = '0%';
+        dropdownBtn.blur();
+    }
+
+    window.addEventListener('click', (e) => {
+        const clickedElement = e.target;
+        const secondaryDropDownBtn = document.querySelector('.secondary_dropdown_btn');
+        if(!secondaryDropDownBtn.contains(clickedElement)) {
+            dropdownList.classList.remove('secondary_dropdown_btn__dropdown-list--show');
+            dropdownList.style.height = '0%';
+            dropdownBtn.blur();
+        }
+    });
+  })()"
+    onblur="(() => {
+        console.log('meow')
+    })()"
+    [icon]="'arrow_drop_down'"
+    [text]="this.currentValue"
+  >
+  </app-secondary-btn>
+
+  <ul class="secondary_dropdown_btn__dropdown-list">
+    <li
+      class="secondary_dropdown_btn__dropdown-list-item"
+      *ngFor="let option of this.options"
+    >
+      {{ option }}
+    </li>
+  </ul>
+</div>

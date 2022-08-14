@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  HostListener,
+  Input,
+  OnInit,
+} from '@angular/core';
 
 @Component({
   selector: 'app-secondary-dropdown-btn',
@@ -13,6 +19,10 @@ export class SecondaryDropdownBtnComponent implements OnInit {
   currentValue: typeof this.options[0];
 
   constructor() {}
+
+  public test() {
+    console.log('meow');
+  }
 
   ngOnInit(): void {}
 }
