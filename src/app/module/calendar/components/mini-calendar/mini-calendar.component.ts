@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { Calendar, Page } from '../../class';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mini-calendar',
@@ -41,12 +41,30 @@ export class MiniCalendarComponent extends Calendar implements OnInit {
     this.currentDay = currentDay;
 
     location.onUrlChange(() => {
-      const currentMonth = parseInt(location.path().split('/')[4]) - 1; // default current month
+      const prevYear = this.getCurrentYear();
+
       const currentYear = parseInt(location.path().split('/')[3]); // default current year
+      const currentMonth = parseInt(location.path().split('/')[4]) - 1; // default current month
       const currentDay = parseInt(location.path().split('/')[5]); //default current day
-      this.setCurrentMonth(currentMonth);
+
       this.setCurrentYear(currentYear);
-      this.currentDay = currentDay;
+      this.setCurrentMonth(currentMonth);
+      this.setCurrentDay(currentDay);
+
+      // navigating to calendar page
+      if (
+        this.getCurrentYear() - prevYear > 0 ||
+        this.getCurrentYear() - prevYear < 0
+      ) {
+        const newPages: Page[] = Array.from(
+          {
+            length: this.TOTAL_MONTH,
+          },
+
+          (_, i: number) => new Page(i, this.getCurrentYear())
+        );
+        this.setPages(newPages);
+      }
     });
   }
 
@@ -55,6 +73,10 @@ export class MiniCalendarComponent extends Calendar implements OnInit {
    */
   public getCurrentDay(): number {
     return this.currentDay;
+  }
+
+  public setCurrentDay(newCurrentDay: number): void {
+    this.currentDay = newCurrentDay;
   }
 
   public isToday(year: number, month: number, day: number): boolean {
@@ -82,8 +104,8 @@ export class MiniCalendarComponent extends Calendar implements OnInit {
       this.getCurrentMonth() === new Date().getMonth() &&
       this.getCurrentYear() === new Date().getFullYear()
     )
-      this.currentDay = new Date().getDate();
-    else this.currentDay = 1;
+      this.setCurrentDay(new Date().getDate());
+    else this.setCurrentDay(1);
 
     // navigating to next calendar page
     if (this.getCurrentYear() - prevYear > 0) {
@@ -115,8 +137,8 @@ export class MiniCalendarComponent extends Calendar implements OnInit {
       this.getCurrentMonth() === new Date().getMonth() &&
       this.getCurrentYear() === new Date().getFullYear()
     )
-      this.currentDay = new Date().getDate();
-    else this.currentDay = 1;
+      this.setCurrentDay(new Date().getDate());
+    else this.setCurrentDay(1);
 
     // navigating to previous calendar page
     if (this.currentYear - prevYear < 0) {
