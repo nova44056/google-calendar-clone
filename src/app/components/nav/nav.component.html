@@ -11,7 +11,10 @@
     <app-logo></app-logo>
     <span>Calendar</span>
   </div>
-  <app-secondary-btn [text]="'Today'"></app-secondary-btn>
+  <app-secondary-btn
+    (click)="this.navigateToToday()"
+    [text]="'Today'"
+  ></app-secondary-btn>
   <app-secondary-dropdown-btn
     [options]="['Day', 'Week', 'Month', 'Year', 'Schedule']"
     [currentValue]="'Month'"

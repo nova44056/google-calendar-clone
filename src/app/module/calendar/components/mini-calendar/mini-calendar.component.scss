@@ -4,13 +4,8 @@
     table{
         width: 100%;
         table-layout: fixed;
-        font-size: .75rem;
-    
-  
+        font-size: 10px;
     }
-
-
-
 
     &__navigationContainer{
         display: flex;
@@ -45,10 +40,10 @@
         justify-content: center;
 
         div{
-           width: 2rem;
+           width: 65%;
            margin-left: auto;
            margin-right: auto;
-           padding: .5rem;
+        //    padding: 4px;
            border-radius: 50%;
            display: flex;
            justify-content: center;

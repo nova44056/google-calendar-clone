@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Page } from './page';
 
 export class Calendar {
@@ -22,7 +23,12 @@ export class Calendar {
   protected currentDay: number;
   protected pages: Page[] = [];
 
-  constructor(currentYear: number, currentMonth: number, currentDay: number) {
+  constructor(
+    currentYear: number,
+    currentMonth: number,
+    currentDay: number,
+    location: Location
+  ) {
     this.currentYear = currentYear;
     this.currentMonth = currentMonth;
     this.currentDay = currentDay;
@@ -32,6 +38,33 @@ export class Calendar {
       },
       (_, i: number) => new Page(i, currentYear)
     );
+
+    location.onUrlChange(() => {
+      const prevYear = this.getCurrentYear();
+
+      const currentYear = parseInt(location.path().split('/')[3]); // default current year
+      const currentMonth = parseInt(location.path().split('/')[4]) - 1; // default current month
+      const currentDay = parseInt(location.path().split('/')[5]); //default current day
+
+      this.setCurrentYear(currentYear);
+      this.setCurrentMonth(currentMonth);
+      this.setCurrentDay(currentDay);
+
+      // update calendar page when the url change
+      if (
+        this.getCurrentYear() - prevYear > 0 ||
+        this.getCurrentYear() - prevYear < 0
+      ) {
+        const newPages: Page[] = Array.from(
+          {
+            length: this.TOTAL_MONTH,
+          },
+
+          (_, i: number) => new Page(i, this.getCurrentYear())
+        );
+        this.setPages(newPages);
+      }
+    });
   }
 
   public getCurrentYear(): number {
