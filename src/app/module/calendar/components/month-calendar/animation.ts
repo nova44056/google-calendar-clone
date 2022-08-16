@@ -9,99 +9,76 @@ const transformNextAfter = 0;
 const transformPrevBegin = -2;
 const transformPrevAfter = 0;
 
+const animationSlideInBegin = {
+  transform: `translateX(${transformNextBegin}%)`,
+  opacity: '0%',
+};
+const animationSlideInAfter = {
+  transform: `translateX(${transformNextAfter}%)`,
+  opacity: '100%',
+};
+
+const animationSlideOutBegin = {
+  transform: `translateX(${transformPrevBegin}%)`,
+  opacity: '0%',
+};
+
+const animationSlideOutAfter = {
+  transform: `translateX(${transformPrevAfter}%)`,
+  opacity: '100%',
+};
+
 export const monthCalendarAnimation = trigger('slideInOut', [
   // next animation
   transition(`void => next`, [
-    style({
-      transform: `translateX(${transformNextBegin}%)`,
-      opacity: '0%',
-    }),
+    style(animationSlideInBegin),
     animate(
       `${transitionTime} ${transitionMode}`,
-      style({
-        transform: `translateX(${transformNextAfter}%)`,
-        opacity: '100%',
-      })
+      style(animationSlideInAfter)
     ),
   ]),
   transition('next => next_next', [
-    style({
-      transform: `translateX(${transformNextBegin}%)`,
-      opacity: '0%',
-    }),
+    style(animationSlideInBegin),
     animate(
       `${transitionTime} ${transitionMode}`,
-      style({
-        transform: `translateX(${transformNextAfter}%)`,
-        opacity: '100%',
-      })
+      style(animationSlideInAfter)
     ),
   ]),
   transition('next_next => next', [
-    style({
-      transform: `translateX(${transformNextBegin}%)`,
-      opacity: '0%',
-    }),
+    style(animationSlideInBegin),
     animate(
       `${transitionTime} ${transitionMode}`,
-      style({
-        transform: `translateX(${transformNextAfter}%)`,
-        opacity: '100%',
-      })
+      style(animationSlideInAfter)
     ),
   ]),
   transition('prev => next', [
-    style({
-      transform: `translateX(${transformNextBegin}%)`,
-      opacity: '0%',
-    }),
+    style(animationSlideInBegin),
     animate(
       `${transitionTime} ${transitionMode}`,
-      style({
-        transform: `translateX(${transformNextAfter}%)`,
-        opacity: '100%',
-      })
+      style(animationSlideInAfter)
     ),
   ]),
   transition('prev_prev => next', [
-    style({
-      transform: `translateX(${transformNextBegin}%)`,
-      opacity: '0%',
-    }),
+    style(animationSlideInBegin),
     animate(
       `${transitionTime} ${transitionMode}`,
-      style({
-        transform: `translateX(${transformNextAfter}%)`,
-        opacity: '100%',
-      })
+      style(animationSlideInAfter)
     ),
   ]),
 
   // prev animation
   transition(`void => prev`, [
-    style({
-      transform: `translateX(${transformPrevBegin}%)`,
-      opacity: '0%',
-    }),
+    style(animationSlideOutBegin),
     animate(
       `${transitionTime} ${transitionMode}`,
-      style({
-        transform: `translateX(${transformPrevAfter}%)`,
-        opacity: '100%',
-      })
+      style(animationSlideOutAfter)
     ),
   ]),
   transition(`prev => prev_prev`, [
-    style({
-      transform: `translateX(${transformPrevBegin}%)`,
-      opacity: '0%',
-    }),
+    style(animationSlideOutBegin),
     animate(
       `${transitionTime} ${transitionMode}`,
-      style({
-        transform: `translateX(${transformPrevAfter}%)`,
-        opacity: '100%',
-      })
+      style(animationSlideOutAfter)
     ),
   ]),
   transition(`prev_prev => prev`, [
@@ -118,29 +95,17 @@ export const monthCalendarAnimation = trigger('slideInOut', [
     ),
   ]),
   transition('next_next => prev', [
-    style({
-      transform: `translateX(${transformPrevBegin}%)`,
-      opacity: '0%',
-    }),
+    style(animationSlideOutBegin),
     animate(
       `${transitionTime} ${transitionMode}`,
-      style({
-        transform: `translateX(${transformPrevAfter}%)`,
-        opacity: '100%',
-      })
+      style(animationSlideOutAfter)
     ),
   ]),
   transition('next => prev', [
-    style({
-      transform: `translateX(${transformPrevBegin}%)`,
-      opacity: '0%',
-    }),
+    style(animationSlideOutBegin),
     animate(
       `${transitionTime} ${transitionMode}`,
-      style({
-        transform: `translateX(${transformPrevAfter}%)`,
-        opacity: '100%',
-      })
+      style(animationSlideOutAfter)
     ),
   ]),
 ]);
