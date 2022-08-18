@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 
-const transitionTime = '400ms';
+const transitionTime = '100ms';
 const transitionMode = 'ease-in-out';
 
 const transformNextBegin = 2;
@@ -11,21 +11,21 @@ const transformPrevAfter = 0;
 
 const animationSlideInBegin = {
   transform: `translateX(${transformNextBegin}%)`,
-  // opacity: '0%',
+  opacity: '0%',
 };
 const animationSlideInAfter = {
   transform: `translateX(${transformNextAfter}%)`,
-  // opacity: '100%',
+  opacity: '100%',
 };
 
 const animationSlideOutBegin = {
   transform: `translateX(${transformPrevBegin}%)`,
-  // opacity: '0%',
+  opacity: '0%',
 };
 
 const animationSlideOutAfter = {
   transform: `translateX(${transformPrevAfter}%)`,
-  // opacity: '100%',
+  opacity: '100%',
 };
 
 export const monthCalendarAnimation = trigger('slideInOut', [

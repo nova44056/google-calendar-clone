@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 import { PortalBridgeService } from 'src/app/portal-bridge.service';
 import { Calendar } from '../../class';
 import { monthCalendarAnimation } from './animation';
+import { compareDate } from '../../utils';
 
 type CalendarAnimation = 'next' | 'prev' | 'next_next' | 'prev_prev' | 'void';
 
@@ -30,6 +31,25 @@ export class MonthCalendarComponent extends Calendar implements AfterViewInit {
     const currentYear = parseInt(location.path().split('/')[3]); // default current year
     const currentMonth = parseInt(location.path().split('/')[4]) - 1; // default current month
     const currentDay = parseInt(location.path().split('/')[5]); //default current day
+
+    location.onUrlChange(() => {
+      const d1 = {
+        year: parseInt(location.path().split('/')[3]),
+        month: parseInt(location.path().split('/')[4]) - 1,
+        day: parseInt(location.path().split('/')[5]),
+      };
+      const d2 = {
+        year: this.getCurrentYear(),
+        month: this.getCurrentMonth(),
+        day: this.getCurrentDay(),
+      };
+
+      if (compareDate(d1, d2) === 1) {
+        this.setAnimationState('next');
+      } else if (compareDate(d1, d2) === -1) {
+        this.setAnimationState('prev');
+      }
+    });
 
     super(currentYear, currentMonth, currentDay, location);
   }
