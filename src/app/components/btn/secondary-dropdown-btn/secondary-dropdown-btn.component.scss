@@ -1,6 +1,10 @@
 .secondary_dropdown_btn{
     position: relative;
 
+    & > :first-child{
+        background-color: red !important;
+    }
+
     .secondary_dropdown_btn__dropdown-list{
         list-style-type: none;
         background-color: white;
@@ -25,5 +29,7 @@
                 background-color: #f5f5f5;
             }
         }
+
+
     }
 }
