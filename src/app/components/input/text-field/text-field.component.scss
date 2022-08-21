@@ -1,0 +1,39 @@
+.text_field{
+    border-bottom: 1px solid #dadce0;
+    width: 100%;
+    color: #5f6368;
+    font-family: 'Product Sans';
+    position: relative;
+    
+    & > input{
+        background: none;
+        font-size: 1.5rem;
+        border: none;
+        outline: none;
+        width: 100%;
+    }
+
+
+    &_animationBorder_left{
+        content: '';
+        height: 2px;
+        width: 0;
+        background-color: #4285F4;
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transition: all 200ms ease-in-out;
+    }
+
+    &_animationBorder_right{
+        content: '';
+        height: 2px;
+        width: 0;
+        background-color: #4285F4;
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transition: all 200ms ease-in-out;
+    }
+
+}

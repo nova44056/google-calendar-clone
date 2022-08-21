@@ -1,0 +1,11 @@
+<div
+  (click)="this.toggleCreateDetailDialogVisibility($event)"
+  [id]="this.uniqueID"
+  class="calendar_cell"
+>
+  <app-create-detail
+    [position]="this.positionMap[this.position[0]][this.position[1]]"
+    [visibility]="this.createDetailDialogVisibility"
+  ></app-create-detail>
+  <span>{{ day }}</span>
+</div>

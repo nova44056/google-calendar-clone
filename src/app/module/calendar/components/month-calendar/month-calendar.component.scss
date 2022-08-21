@@ -5,6 +5,7 @@
     border-collapse: collapse;
     border-left: 0.5px solid #dadce0;
     transition: all 0.3s ease-in-out;
+    position: relative;
     
     thead{
         color: #5f6368;
@@ -21,11 +22,15 @@
         }
     }
 
+
+
+
     tbody{
         tr{
             td{
                 border-right: 1px solid #dadce0;
                 border-bottom: 1px solid #dadce0;
+                position: relative;
             }
         }
     }
@@ -58,8 +63,7 @@
         }
     }
 
-    &__row{
-    }
+
 
     &__column{
         vertical-align: baseline;

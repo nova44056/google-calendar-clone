@@ -1,4 +1,4 @@
-import { CdkPortal, TemplatePortal } from '@angular/cdk/portal';
+import { TemplatePortal } from '@angular/cdk/portal';
 import {
   AfterViewInit,
   Component,
@@ -8,9 +8,10 @@ import {
 } from '@angular/core';
 import { Location } from '@angular/common';
 import { PortalBridgeService } from 'src/app/portal-bridge.service';
-import { Calendar } from '../../class';
+import { Calendar, Day } from '../../class';
 import { monthCalendarAnimation } from './animation';
 import { compareDate } from '../../utils';
+import * as e from 'express';
 
 type CalendarAnimation = 'next' | 'prev' | 'next_next' | 'prev_prev' | 'void';
 
@@ -23,6 +24,7 @@ type CalendarAnimation = 'next' | 'prev' | 'next_next' | 'prev_prev' | 'void';
 export class MonthCalendarComponent extends Calendar implements AfterViewInit {
   @ViewChild('portalContent') portalContent: TemplateRef<unknown>;
   protected animationState: CalendarAnimation = 'void';
+
   constructor(
     private portalBridgeService: PortalBridgeService,
     private _viewContainerRef: ViewContainerRef,
@@ -115,5 +117,9 @@ export class MonthCalendarComponent extends Calendar implements AfterViewInit {
       this._viewContainerRef
     );
     this.portalBridgeService.setPortal(portal);
+  }
+
+  protected generateUniqueID(year: number, month: number, day: number): string {
+    return `c${year}${month}${day}`;
   }
 }

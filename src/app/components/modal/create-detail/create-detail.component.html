@@ -1,0 +1,69 @@
+<div
+  @slideInOut
+  *ngIf="this.visibility"
+  class="createDetail"
+  [ngStyle]="this.position"
+>
+  <div class="createDetail__header">
+    <mat-icon>close</mat-icon>
+  </div>
+  <form action="POST" class="createDetail__form">
+    <div class="col_1">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="col_2">
+      <div>
+        <app-text-field placeholder="Add title and time"></app-text-field>
+      </div>
+      <div>
+        <button
+          [ngClass]="{
+            'createDetail__btn--active': this.getDetailType() === 'event'
+          }"
+          class="createDetail__btn"
+          type="button"
+          (click)="this.setDetailType('event')"
+        >
+          Event
+        </button>
+        <button
+          [ngClass]="{
+            'createDetail__btn--active': this.getDetailType() === 'task'
+          }"
+          class="createDetail__btn"
+          type="button"
+          (click)="this.setDetailType('task')"
+        >
+          Task
+        </button>
+        <button
+          [ngClass]="{
+            'createDetail__btn--active': this.getDetailType() === 'reminder'
+          }"
+          class="createDetail__btn"
+          type="button"
+          (click)="this.setDetailType('reminder')"
+        >
+          Reminder
+        </button>
+      </div>
+      <app-create-event
+        *ngIf="this.getDetailType() === 'event'"
+      ></app-create-event>
+      <app-create-task
+        *ngIf="this.getDetailType() === 'task'"
+      ></app-create-task>
+      <app-create-reminder
+        *ngIf="this.getDetailType() === 'reminder'"
+      ></app-create-reminder>
+    </div>
+  </form>
+</div>

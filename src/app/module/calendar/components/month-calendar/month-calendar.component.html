@@ -13,9 +13,30 @@
   <tbody>
     <tr
       class="month_calendar__row"
-      *ngFor="let row of this.getPage(this.getCurrentMonth()).getDays()"
+      *ngFor="
+        let row of this.getPage(this.getCurrentMonth()).getDays();
+        let i = index
+      "
     >
-      <td class="month_calendar__column" *ngFor="let column of row">
+      <td
+        class="month_calendar__column"
+        *ngFor="let column of row; let j = index"
+      >
+        <app-calendar-cell
+          [position]="[i, j]"
+          [year]="column.getYear()"
+          [month]="column.getMonth()"
+          [day]="column.getDay()"
+          [uniqueID]="
+            this.generateUniqueID(
+              column.getYear(),
+              column.getMonth(),
+              column.getDay()
+            )
+          "
+        ></app-calendar-cell>
+      </td>
+      <!-- <td class="month_calendar__column" *ngFor="let column of row">
         <div
           [ngClass]="{
             'month_calendar__column--active-today': this.isToday(
@@ -30,7 +51,7 @@
         >
           {{ column.getDay() }}
         </div>
-      </td>
+      </td> -->
     </tr>
   </tbody>
 </table>
