@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Detail } from 'src/app/module/calendar/class';
 import { DetailType } from 'src/app/module/calendar/type';
 import { Modal } from '../modal';
@@ -19,7 +19,12 @@ import { Modal } from '../modal';
 })
 export class CreateDetailComponent extends Modal implements OnInit {
   private detailPayload: Detail;
-  private detailType: DetailType = 'event';
+
+  @Input()
+  detailType: DetailType;
+
+  @Output()
+  detailTypeChange = new EventEmitter<DetailType>();
 
   @Input()
   visibility: boolean;
@@ -31,13 +36,10 @@ export class CreateDetailComponent extends Modal implements OnInit {
     super();
   }
 
-  public setDetailType(type: DetailType) {
-    this.detailType = type;
-  }
-
-  public getDetailType(): DetailType {
-    return this.detailType;
-  }
-
   ngOnInit(): void {}
+
+  public setDetailType(detailType: DetailType): void {
+    this.detailType = detailType;
+    this.detailTypeChange.emit(detailType);
+  }
 }

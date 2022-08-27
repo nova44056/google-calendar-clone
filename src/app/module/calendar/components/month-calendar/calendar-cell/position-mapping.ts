@@ -114,5 +114,75 @@ export function initializePositionMap() {
     top: '-177.5px',
   };
 
+  positionMap[3][0] = {
+    left: '100%',
+    top: '-355px',
+  };
+
+  positionMap[3][1] = {
+    left: '100%',
+    top: '-355px',
+  };
+
+  positionMap[3][2] = {
+    right: '100%',
+    top: '-355px',
+  };
+
+  positionMap[3][3] = {
+    right: '100%',
+    top: '-355px',
+  };
+
+  positionMap[3][4] = {
+    right: '100%',
+    top: '-355px',
+  };
+
+  positionMap[3][5] = {
+    right: '100%',
+    top: '-355px',
+  };
+
+  positionMap[3][6] = {
+    right: '100%',
+    top: '-355px',
+  };
+
+  positionMap[4][0] = {
+    left: '100%',
+    top: '-500px',
+  };
+
+  positionMap[4][1] = {
+    left: '100%',
+    top: '-500px',
+  };
+
+  positionMap[4][2] = {
+    right: '100%',
+    top: '-500px',
+  };
+
+  positionMap[4][3] = {
+    right: '100%',
+    top: '-500px',
+  };
+
+  positionMap[4][4] = {
+    right: '100%',
+    top: '-500px',
+  };
+
+  positionMap[4][5] = {
+    right: '100%',
+    top: '-500px',
+  };
+
+  positionMap[4][6] = {
+    right: '100%',
+    top: '-500px',
+  };
+
   return positionMap;
 }

@@ -6,6 +6,12 @@
   <app-create-detail
     [position]="this.positionMap[this.position[0]][this.position[1]]"
     [visibility]="this.createDetailDialogVisibility"
+    [(detailType)]="this.detailType"
   ></app-create-detail>
   <span>{{ day }}</span>
+  <app-detail-block-placeholder
+    style="width: 100%"
+    [visibility]="this.createDetailDialogVisibility"
+    [detailType]="this.detailType"
+  ></app-detail-block-placeholder>
 </div>

@@ -10,6 +10,8 @@ import { CreateTaskComponent } from 'src/app/components/partial_form/create-deta
 import { CreateEventComponent } from 'src/app/components/partial_form/create-detail/create-event/create-event.component';
 import { CreateReminderComponent } from 'src/app/components/partial_form/create-detail/create-reminder/create-reminder.component';
 import { CalendarCellComponent } from './components/month-calendar/calendar-cell/calendar-cell.component';
+import { DetailBlockComponent } from './components/month-calendar/detail-block/detail-block.component';
+import { DetailBlockPlaceholderComponent } from './components/month-calendar/detail-block/detail-block-placeholder/detail-block-placeholder.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { CalendarCellComponent } from './components/month-calendar/calendar-cell
     CreateTaskComponent,
     CreateReminderComponent,
     CalendarCellComponent,
+    DetailBlockComponent,
+    DetailBlockPlaceholderComponent,
   ],
   imports: [CommonModule, PortalModule, MatIconModule],
   exports: [MonthCalendarComponent, MiniCalendarComponent],

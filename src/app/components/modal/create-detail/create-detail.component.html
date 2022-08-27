@@ -26,7 +26,7 @@
       <div>
         <button
           [ngClass]="{
-            'createDetail__btn--active': this.getDetailType() === 'event'
+            'createDetail__btn--active': this.detailType === 'event'
           }"
           class="createDetail__btn"
           type="button"
@@ -36,7 +36,7 @@
         </button>
         <button
           [ngClass]="{
-            'createDetail__btn--active': this.getDetailType() === 'task'
+            'createDetail__btn--active': this.detailType === 'task'
           }"
           class="createDetail__btn"
           type="button"
@@ -46,7 +46,7 @@
         </button>
         <button
           [ngClass]="{
-            'createDetail__btn--active': this.getDetailType() === 'reminder'
+            'createDetail__btn--active': this.detailType === 'reminder'
           }"
           class="createDetail__btn"
           type="button"
@@ -55,14 +55,10 @@
           Reminder
         </button>
       </div>
-      <app-create-event
-        *ngIf="this.getDetailType() === 'event'"
-      ></app-create-event>
-      <app-create-task
-        *ngIf="this.getDetailType() === 'task'"
-      ></app-create-task>
+      <app-create-event *ngIf="this.detailType === 'event'"></app-create-event>
+      <app-create-task *ngIf="this.detailType === 'task'"></app-create-task>
       <app-create-reminder
-        *ngIf="this.getDetailType() === 'reminder'"
+        *ngIf="this.detailType === 'reminder'"
       ></app-create-reminder>
     </div>
   </form>

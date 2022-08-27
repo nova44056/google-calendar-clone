@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DetailType } from '../../../type';
 import { initializePositionMap } from './position-mapping';
 
 @Component({
@@ -19,6 +20,8 @@ export class CalendarCellComponent implements OnInit {
 
   @Input()
   position: [number, number];
+
+  protected detailType: DetailType = 'event';
 
   protected positionMap = [
     [{}, {}, {}, {}, {}, {}],
